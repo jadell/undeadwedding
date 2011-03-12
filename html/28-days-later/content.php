@@ -11,10 +11,13 @@ if (!$loggedIn) {
 $dataFile = file($dataFilePath);
 $preferredWeapon = array();
 foreach ($dataFile as $choice) {
-	if (!isset($preferredWeapon[$choice])) {
-		$preferredWeapon[$choice] = 0;
+	$choice = trim($choice);
+	if ($choice) {
+		if (!isset($preferredWeapon[$choice])) {
+			$preferredWeapon[$choice] = 0;
+		}
+		$preferredWeapon[$choice]++;
 	}
-	$preferredWeapon[$choice]++;
 }
 
 arsort($preferredWeapon);
