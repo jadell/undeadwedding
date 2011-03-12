@@ -1,3 +1,7 @@
+<?php
+session_start();
+$loggedIn = isset($_SESSION['loggedIn']) ? $_SESSION['loggedIn'] : false;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +13,7 @@
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
 </head>
 <?php
@@ -28,10 +33,10 @@ $active = function($v){
 			<li <?php $active('/zombieland/') ?>><a href="/zombieland/">Zombieland</a></li>
 			<li <?php $active('/walking-dead/') ?>><a href="/walking-dead/">Walking Dead</a></li>
 			<li <?php $active('/28-days-later/') ?>><a href="/28-days-later/">28 Days Later</a></li>
-	<?php if(!isset($_SESSION['user'])): ?>
+	<?php if(!$loggedIn): ?>
 			<li <?php $active('/login/') ?>><a href="/login/">login</a></li>
 	<?php else: ?>
-			<li <?php $active('/logout/') ?>><a href="/logout/">logout</a></li>
+			<li <?php $active('/logout/') ?>><a href="/login?logout=1">logout</a></li>
 	<?php endif; ?>
 		</ul></nav>
 	</header><!-- /#banner -->

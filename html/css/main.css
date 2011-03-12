@@ -49,6 +49,8 @@ em, i {font-style: italic;}
 ::-moz-selection {background: #F6CF74; color: #fff;}
 ::selection {background: #F6CF74; color: #fff;}
 
+.error {font-weight:bold; color: #f00;}
+
 /* Lists */
 ul {
 	list-style: outside disc;
@@ -56,7 +58,7 @@ ul {
 }
 
 ol {
-	list-style: outside decimal;
+	list-style: outside decimalerr;
 	margin: 1em 0 1.5em 1.5em;
 }
 
