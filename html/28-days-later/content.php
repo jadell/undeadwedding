@@ -1,16 +1,16 @@
 <?php
-$dataFilePath = '../data.txt';
+if (!isset($_SESSION['votes'])) {
+	$_SESSION['votes'] = array('Ax','Chainsaw','Shotgun','Ax','Chainsaw','Shotgun','Shotgun','Shotgun','Chainsaw','Shotgun');
+}
 
 if (!$loggedIn) {
 	header("Location: /login");
 } else if (isset($_POST['vote'])) {
-	file_put_contents($dataFilePath, $_POST['vote']."\n", FILE_APPEND|LOCK_EX);
-	header("Location: /28-days-later");
+	$_SESSION['votes'][] = $_POST['vote'];
 }
 
-$dataFile = file($dataFilePath);
 $preferredWeapon = array();
-foreach ($dataFile as $choice) {
+foreach ($_SESSION['votes'] as $choice) {
 	$choice = trim($choice);
 	if ($choice) {
 		if (!isset($preferredWeapon[$choice])) {
@@ -26,7 +26,7 @@ arsort($preferredWeapon);
 <h2>Preferred Zombie Dispatching Implement</h2>
 <ul id="weapon">
 	<?php foreach ($preferredWeapon as $weapon => $count) : ?>
-		<li><?php echo $weapon; ?>: <?php echo $count; ?></li>
+		<li><span class="choice"><?php echo $weapon; ?></span>: <span class="count"><?php echo $count; ?></span></li>
 	<?php endforeach; ?>
 </ul>
 
