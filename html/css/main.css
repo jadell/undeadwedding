@@ -226,7 +226,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	overflow: hidden;
 	padding: 20px 20px;
 	width: 760px;
-	
+	min-height: 300px;	
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
