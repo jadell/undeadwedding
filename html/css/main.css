@@ -352,3 +352,17 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 	
 	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 	#add-comment * {margin-bottom: .5em;}
+
+#zombies li.dead {
+	border: 1px solid red;
+	text-decoration: line-through;
+	background-color: #FEF1E9;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+#zombies li .health {
+	float: right;
+	height: 10px;
+	display: block;
+}
