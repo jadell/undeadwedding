@@ -27,4 +27,4 @@ vows.describe('Chain Test').addBatch({
 		topic : 789,
 		'after A and B' : function (topic) { assert.equal(topic, 789); },
 	}
-}).export(module);;
+}).export(module);

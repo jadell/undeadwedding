@@ -1,26 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function() {
-        $('#zombies li').click(function(e){
-                e.preventDefault();
-		ammo = $('#ammo').text();
-		ammo--;
-		if(ammo < 0){
-			alert('Click click. Crap.');
-			return;
-		}
-		h = $(this).attr('rel');
-		h = h - 22;
-		$(this).attr('rel', h);
-		health($(this));
-		$('#ammo').text(ammo);
-        });
-
-	$('#zombies li').each(function(){
-		health($(this));
-	});
-});
-
-function health(el){
+var health = function(el){
 	h = $(el).attr('rel');
 	if(h <= 0){
 		h = 0;
@@ -29,6 +8,28 @@ function health(el){
 	$(el).find('.health').css('width', h+'px');
 	$(el).find('.health').css('background-color', 'green');
 }
+$(document).ready(function() {
+        $('#zombies li').click(function(e){
+                e.preventDefault();
+		ammo = $('#ammo').text();
+		ammo--;
+		if(ammo < 0){
+			alert('Click click. Crap. Zombie eats your face!!');
+			return;
+		}
+		h = $(this).attr('rel');
+		h = h - 22;
+		$(this).attr('rel', h);
+		health($(this));
+		$('#ammo').text(ammo);
+		return
+        });
+
+	$('#zombies li').each(function(){
+		health($(this));
+	});
+});
+
 
 </script>
 <h4>Ammo: <span id="ammo">56</span></h4>
@@ -50,10 +51,10 @@ function health(el){
 	<li rel="0" class="dead">Zombie <div class="health"></div></li>
 	<li rel="100">Zombie <div class="health"></div></li>
 	<li rel="5">Zombie <div class="health"></div></li>
-	<li rel="100">Zombie <div class="health"></div></li>
+	<li rel="80">Zombie <div class="health"></div></li>
 	<li rel="100">Zombie <div class="health"></div></li>
 	<li rel="0" class="dead">Zombie <div class="health"></div></li>
-	<li rel="100">Zombie <div class="health"></div></li>
+	<li rel="90">Zombie <div class="health"></div></li>
 	<li rel="100">Zombie <div class="health"></div></li>
 	<li rel="0" class="dead">Zombie <div class="health"></div></li>
 	<li rel="100">Zombie <div class="health"></div></li>
