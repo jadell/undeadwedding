@@ -10,15 +10,22 @@ vows.describe('Weapon Test').addBatch({
 		'should be on walking dead page' : function (browser) { assert.equal(browser.location, baseUrl+'/walking-dead/'); },
 		'shoot zombie - alot' : {
 			topic :  function (browser) { 
-				browser.setMaxListeners(130);
-				var i = 0;
-				for(i=0;i<=120;i++){
-					browser.fire('click', browser.querySelector('ul#zombies li:first'), this.callback);
-				}
+				var done = this.callback
+				var countdown = 57;
+				var shootToKill = function () {
+					countdown--;
+					// WTF, this line seems to fix a timing issue.
+					browser.window.$('#ammo').html();
+					var callback = countdown ? shootToKill : done;
+					browser.fire('click', browser.querySelector('ul#zombies li:first'), callback);
+				};
+				shootToKill();
 			},
 			'no ammo' : function (browser) {
 				var count = browser.window.$('#ammo').html();
 				assert.isTrue(count == 0);
+			},
+			'you are meat' : function (browser) {
 				assert.isTrue(browser.prompted('Click click. Crap. Zombie eats your face!!'));
 			}
 		}
