@@ -59,7 +59,7 @@ $active = function($v){
 			</span><!-- /.primary -->
 		
 		
-			<span class="bio">undead wedding! <strong>automated full stack testing using zombie and vows</strong></span>
+			<span class="bio">undead wedding! <strong>automated full stack testing using <a href="http://nodejs.org/">node.js</a>, <a href="http://zombie.labnotes.org/">Zombie.js</a> and  <a href="http://vowsjs.org/">Vows</a></strong></span>
 
 		
 		</address><!-- /#about -->
