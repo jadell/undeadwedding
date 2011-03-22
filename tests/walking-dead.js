@@ -4,7 +4,7 @@ var zombie = require('zombie'),
 
 var baseUrl = "http://uw.localhost";
 
-vows.describe('Weapon Test').addBatch({
+vows.describe('Ammo Test').addBatch({
 	'Navigate to Walking Dead' : {
 		topic : function (){ zombie.visit(baseUrl+'/walking-dead', this.callback); },
 		'should be on walking dead page' : function (browser) { assert.equal(browser.location, baseUrl+'/walking-dead/'); },
